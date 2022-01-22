@@ -30,6 +30,10 @@ Prototype="int exitfunc(int panel, int event, void *callbackData, int eventData1
 Class="Function"
 Prototype="void getUserInput();"
 
+[toDegress]
+Class="Function"
+Prototype="double toDegress(double radians);"
+
 [toRadians]
 Class="Function"
 Prototype="double toRadians(double degrees);"
@@ -70,6 +74,10 @@ Prototype="void splitAsteroid(Asteroid *asteroidToSplit);"
 Class="Function"
 Prototype="void updateHits();"
 
+[updateEnemy]
+Class="Function"
+Prototype="void updateEnemy();"
+
 [updateGameState]
 Class="Function"
 Prototype="void updateGameState();"
@@ -97,6 +105,10 @@ Prototype="void drawAsteroid(Asteroid *asteroid);"
 [drawAsteroids]
 Class="Function"
 Prototype="void drawAsteroids();"
+
+[drawEnemy]
+Class="Function"
+Prototype="void drawEnemy();"
 
 [draw]
 Class="Function"

@@ -59,15 +59,25 @@ typedef struct
 } Asteroid;
 
 
+typedef struct
+{
+	double x;
+	double y;
+	int isAlive;
+} Enemy;
+
+
 UserInputs userInputs;
 Spaceship spaceship;
 
 Projectile* projectiles [MaxProjectiles];
 int projectileIndex;
-int lastProjectileCreatedTime;
-
+int lastProjectileCreatedTime = 0;
 
 Asteroid* asteroids [MaxAsteroids];
+
+Enemy enemyShip;
+int lastEnemyProjectileCreatedTime= 0;
 
 int livesCount;
 int score; 
@@ -141,7 +151,10 @@ void initilize ()
 	spaceship.x = 50;
 	spaceship.y = 50;
 
-
+	//Initalize Enemy
+	enemyShip.isAlive = 0;
+	enemyShip.x = 0;
+	enemyShip.y = 0;
 
 	projectileIndex = 0;
 	for (i=0; i<MaxProjectiles; i++)
@@ -233,6 +246,11 @@ void getUserInput()
 
 
 // **************** Update Game ***************
+double toDegress(double radians)
+{
+	return radians * (M_PI * 180.0);	
+}
+
 double toRadians(double degrees)
 {
 	return degrees * (M_PI / 180.0);
@@ -534,10 +552,74 @@ void updateHits()
 
 }
 
+
+
+void updateEnemy()
+{
+	double randomNumber;
+	int currentTime;
+	
+	double deltaY;
+	double deltaX;
+	double tRes;
+	
+	if (enemyShip.isAlive)
+	{
+		enemyShip.x = enemyShip.x + 4s;
+		
+		if (enemyShip.x > CanvasSize)
+		{
+			enemyShip.isAlive = 0; 	
+		}
+		else
+		{
+			
+			currentTime = clock();
+			if (currentTime > lastEnemyProjectileCreatedTime+1000)
+			{
+				lastEnemyProjectileCreatedTime = currentTime;
+				projectiles[projectileIndex]->x = enemyShip.x;
+				projectiles[projectileIndex]->y = enemyShip.y;
+				projectiles[projectileIndex]->isAlive =1;
+				
+				
+			
+
+				//projectiles[projectileIndex]->angle = 180 - toDegress(atan((spaceship.y - enemyShip.y)/(spaceship.x-enemyShip.x )));
+			
+				deltaY = (spaceship.y - enemyShip.y);
+    			deltaX = (spaceship.x - enemyShip.x);
+    			tRes = toDegress(atan2(deltaY,deltaX)); 
+
+				projectiles[projectileIndex]->angle = 360 - tRes;
+				
+				projectileIndex = (projectileIndex + 1) % MaxProjectiles;
+			}
+		}
+	}
+	else
+	{
+		//Throttle
+		randomNumber = ((double)rand()/RAND_MAX);
+		if (randomNumber < 0.95)
+			return;
+	
+		enemyShip.isAlive = 1;
+		enemyShip.x = 0;
+		enemyShip.y = rand()%CanvasSize;
+	}
+	
+
+	
+	
+}
+
 void updateGameState()
 {
 	updateSpaceship();
 
+	updateEnemy();
+	
 	updateProjectiles();
 
 	updateAsteriods();
@@ -646,6 +728,17 @@ void drawAsteroids()
 }
 
 
+void drawEnemy()
+{
+	if (enemyShip.isAlive)
+	{
+		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_RED);
+		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 2);
+		CanvasDrawOval (panelHandle, PANEL_CANVAS, MakeRect(enemyShip.y, enemyShip.x, 50, 50), VAL_DRAW_FRAME);
+		CanvasDrawLine (panelHandle, PANEL_CANVAS, MakePoint(enemyShip.x-10, enemyShip.y+25), MakePoint(enemyShip.x+60, enemyShip.y+25));
+	}
+}
+
 void draw ()
 {
 	printDebugInformation();
@@ -660,7 +753,8 @@ void draw ()
 	drawSpaceship();
 	drawProjectiles();
 	drawAsteroids();
-
+	drawEnemy();
+	
 	//Close Canvas
 	CanvasEndBatchDraw (panelHandle, PANEL_CANVAS);
 }
