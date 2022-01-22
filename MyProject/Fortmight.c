@@ -599,6 +599,7 @@ void updateHits()
 			{
 				projectiles[j]->isAlive = 0; //Dead
 				enemyShip.isAlive = 0;
+				score = score +50;
 			}
 		}
 	}
@@ -789,8 +790,9 @@ void drawEnemy()
 	{
 		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_RED);
 		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 2);
-		CanvasDrawOval (panelHandle, PANEL_CANVAS, MakeRect(enemyShip.y, enemyShip.x, 50, 50), VAL_DRAW_FRAME);
-		CanvasDrawLine (panelHandle, PANEL_CANVAS, MakePoint(enemyShip.x-10, enemyShip.y+25), MakePoint(enemyShip.x+60, enemyShip.y+25));
+		//CanvasDrawOval (panelHandle, PANEL_CANVAS, MakeRect(enemyShip.y, enemyShip.x, 50, 50), VAL_DRAW_FRAME);
+		CanvasDrawArc (panelHandle, PANEL_CANVAS, MakeRect(enemyShip.y, enemyShip.x, 30, 30), 0, 1800, VAL_DRAW_FRAME);
+		CanvasDrawLine (panelHandle, PANEL_CANVAS, MakePoint(enemyShip.x-10, enemyShip.y+15), MakePoint(enemyShip.x+40, enemyShip.y+15));
 	}
 }
 
