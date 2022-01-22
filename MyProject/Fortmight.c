@@ -37,6 +37,7 @@ typedef struct
 	double y;
 	int angle;
 	int isAlive;
+	int isEnemy;
 } Projectile;
 
 
@@ -164,6 +165,7 @@ void initilize ()
 		p->y = 0;
 		p->angle= 0;
 		p->isAlive = 0;
+		p->isEnemy = 0;
 		projectiles[i]=p;
 	}
 
@@ -310,6 +312,7 @@ void updateProjectiles()
 			projectiles[projectileIndex]->y = spaceship.y;
 			projectiles[projectileIndex]->angle = spaceship.angle;
 			projectiles[projectileIndex]->isAlive =1;
+			projectiles[projectileIndex]->isEnemy = 0;
 			projectileIndex = (projectileIndex + 1) % MaxProjectiles;
 		}
 	}
@@ -493,6 +496,19 @@ void splitAsteroid(Asteroid* asteroidToSplit)
 	splitAsteroidToAngle(asteroidToSplit, (asteroidToSplit->angle-45)%360);
 }
 
+
+int isProjectileHitSpaceship(Projectile* projectile)
+{
+	int spaceshipHitboxSize = 20;
+	if (projectile->x >= spaceship.x-spaceshipHitboxSize && projectile->x < spaceship.x+spaceshipHitboxSize && 
+			projectile->y >= spaceship.y-spaceshipHitboxSize && projectile->y < spaceship.y+spaceshipHitboxSize)
+	{
+		return 1;
+	}
+
+	return 0;	
+}
+
 void updateHits()
 {
 
@@ -501,7 +517,6 @@ void updateHits()
 	int j;
 
 	//Asteriod In Spaceship
-	SetCtrlVal (panelHandle, PANEL_SpaceshipHit, 0);
 	for (i=0; i<MaxAsteroids; i++)
 	{
 		if (asteroids[i]->isAlive)
@@ -548,7 +563,19 @@ void updateHits()
 
 
 
-
+	//Projectile In Ship
+	for (j=0; j<MaxProjectiles; j++)
+	{
+		if (projectiles[j]->isAlive && projectiles[j]->isEnemy == 1)
+		{
+			//If Projectile Hit Spaceship
+			if (isProjectileHitSpaceship(projectiles[j]) == 1)
+			{
+				projectiles[j]->isAlive = 0; //Dead
+				livesCount--; //Reduce Score
+			}
+		}
+	}
 
 }
 
@@ -558,14 +585,11 @@ void updateEnemy()
 {
 	double randomNumber;
 	int currentTime;
-	
-	double deltaY;
-	double deltaX;
-	double tRes;
+
 	
 	if (enemyShip.isAlive)
 	{
-		enemyShip.x = enemyShip.x + 4s;
+		enemyShip.x = enemyShip.x + 2;
 		
 		if (enemyShip.x > CanvasSize)
 		{
@@ -575,24 +599,21 @@ void updateEnemy()
 		{
 			
 			currentTime = clock();
-			if (currentTime > lastEnemyProjectileCreatedTime+1000)
+			if (currentTime > lastEnemyProjectileCreatedTime+500)
 			{
 				lastEnemyProjectileCreatedTime = currentTime;
 				projectiles[projectileIndex]->x = enemyShip.x;
 				projectiles[projectileIndex]->y = enemyShip.y;
 				projectiles[projectileIndex]->isAlive =1;
+				projectiles[projectileIndex]->isEnemy =1;
 				
-				
-			
-
 				//projectiles[projectileIndex]->angle = 180 - toDegress(atan((spaceship.y - enemyShip.y)/(spaceship.x-enemyShip.x )));
-			
-				deltaY = (spaceship.y - enemyShip.y);
-    			deltaX = (spaceship.x - enemyShip.x);
-    			tRes = toDegress(atan2(deltaY,deltaX)); 
-
-				projectiles[projectileIndex]->angle = 360 - tRes;
+				//deltaY = (spaceship.y - enemyShip.y);
+    			//deltaX = (spaceship.x - enemyShip.x);
+    			//tRes = toDegress(atan2(deltaY,deltaX)); 
+				//projectiles[projectileIndex]->angle = 180-tRes;
 				
+				projectiles[projectileIndex]->angle = rand()%360;
 				projectileIndex = (projectileIndex + 1) % MaxProjectiles;
 			}
 		}
@@ -601,7 +622,7 @@ void updateEnemy()
 	{
 		//Throttle
 		randomNumber = ((double)rand()/RAND_MAX);
-		if (randomNumber < 0.95)
+		if (randomNumber < 0.99)
 			return;
 	
 		enemyShip.isAlive = 1;

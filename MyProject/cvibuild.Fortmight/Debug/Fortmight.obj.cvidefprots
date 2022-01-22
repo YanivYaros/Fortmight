@@ -70,6 +70,10 @@ Prototype="void splitAsteroidToAngle(Asteroid *asteroidToSplit, int angle);"
 Class="Function"
 Prototype="void splitAsteroid(Asteroid *asteroidToSplit);"
 
+[isProjectileHitSpaceship]
+Class="Function"
+Prototype="int isProjectileHitSpaceship(Projectile *projectile);"
+
 [updateHits]
 Class="Function"
 Prototype="void updateHits();"
