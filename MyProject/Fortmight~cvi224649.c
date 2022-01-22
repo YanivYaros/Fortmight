@@ -733,17 +733,19 @@ void drawSpaceship()
 		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 4);
 	}
 
-
+	//draw spaceshiptip
 	tipPoint = MakePoint((int)spaceship.x,(int)spaceship.y);
 
+	//draw spaceship wings
 	one_end = MakePoint((int)spaceship.x + (20 * cos(toRadians(spaceship.angle-140))),(int)spaceship.y + (20 * sin(toRadians(spaceship.angle-140))));
 	CanvasDrawLine(panelHandle, PANEL_CANVAS,tipPoint,one_end);
 
 	two_end = MakePoint((int)spaceship.x + (20 * cos(toRadians(spaceship.angle+140))),(int)spaceship.y + (20 * sin(toRadians(spaceship.angle+140))));
 	CanvasDrawLine(panelHandle, PANEL_CANVAS,tipPoint,two_end);
 	
+	//draw spaceship bottom line
 	one_mid = MakePoint((int)spaceship.x + (15 * cos(toRadians(spaceship.angle-140))),(int)spaceship.y + (15 * sin(toRadians(spaceship.angle-140))));
-
+	
     two_mid = MakePoint((int)spaceship.x + (15 * cos(toRadians(spaceship.angle+140))),(int)spaceship.y + (15 * sin(toRadians(spaceship.angle+140))));
 	CanvasDrawLine(panelHandle, PANEL_CANVAS,one_mid,two_mid); 
 
