@@ -48,12 +48,12 @@ Batch Build Debug = False
 [File 0001]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
 File Type = "CSource"
-Disk Date = 3725051912
+Disk Date = 3725698497
 In Projects = "1,"
 Window Top = 95
 Window Left = 42
 Window Z-Order = 1
-Source Window State = "1,374,374,374,16,46,46,0,0,128,0,563,0,563,0,41,0,0,473,66,349,659,1,0,"
+Source Window State = "1,372,372,372,4,12,4,0,0,128,0,595,0,595,0,33,301,0,372,12,349,659,1,0,"
 
 [File 0002]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
