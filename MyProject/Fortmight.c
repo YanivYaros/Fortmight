@@ -16,10 +16,11 @@ static int panelHandle;
 
 
 //Todo:
-// Enemy
 // Spaceship Upgrade Weapon
 // Leadrboard
-// Sounds
+// Sounds and Background
+// Smart Enemy
+// Drift Spaceship
 
 
 typedef struct
@@ -509,9 +510,22 @@ int isProjectileHitSpaceship(Projectile* projectile)
 	return 0;	
 }
 
+
+int isProjectileHitEnemy(Projectile* projectile)
+{
+	int hitboxSize = 50;
+	if (projectile->x >= enemyShip.x-hitboxSize && projectile->x < enemyShip.x+hitboxSize && 
+			projectile->y >= enemyShip.y-hitboxSize && projectile->y < enemyShip.y+hitboxSize)
+	{
+		return 1;
+	}
+
+	return 0;	
+}
+
+
 void updateHits()
 {
-
 
 	int i;
 	int j;
@@ -561,8 +575,6 @@ void updateHits()
 		}
 	}
 
-
-
 	//Projectile In Ship
 	for (j=0; j<MaxProjectiles; j++)
 	{
@@ -576,6 +588,21 @@ void updateHits()
 			}
 		}
 	}
+
+	//Projectile in Enemy
+	for (j=0; j<MaxProjectiles; j++)
+	{
+		if (projectiles[j]->isAlive && projectiles[j]->isEnemy == 0)
+		{
+			//If Projectile Hit Enemy
+			if (isProjectileHitEnemy(projectiles[j]) == 1)
+			{
+				projectiles[j]->isAlive = 0; //Dead
+				enemyShip.isAlive = 0;
+			}
+		}
+	}
+
 
 }
 
@@ -714,15 +741,22 @@ void drawSpaceship()
 
 void drawProjectiles()
 {
-
-	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_RED);
-	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 4);
+	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 5);
 
 	int i;
 	for (i=0; i<MaxProjectiles; i++)
 	{
 		if (projectiles[i]->isAlive)
 		{
+			if (projectiles[i]->isEnemy)
+			{
+				SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_RED);
+			}
+			else
+			{
+				SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_BLACK);
+			}
+			
 			CanvasDrawPoint (panelHandle, PANEL_CANVAS, MakePoint((int)projectiles[i]->x,(int)projectiles[i]->y));
 		}
 	}
