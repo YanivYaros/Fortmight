@@ -30,7 +30,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 1
+Number of Opened Files = 2
 Window Confinement Region Enabled = True
 MainColumnWidth = 196
 FileDateColumnWidth = 70
@@ -48,25 +48,27 @@ Batch Build Debug = False
 [File 0001]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
 File Type = "CSource"
-Disk Date = 3725704385
+Disk Date = 3725705409
 In Projects = "1,"
-Window Top = 133
-Window Left = 277
+Window Top = 95
+Window Left = 34
 Window Z-Order = 1
-Source Window State = "1,464,464,464,4,17,17,0,0,128,0,654,0,654,0,33,443,0,464,24,397,683,0,0,"
+Source Window State = "1,493,493,493,30,31,30,0,0,128,0,112,0,672,0,33,432,0,493,48,310,683,1,22,"
 
 [File 0002]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
 File Type = "User Interface Resource"
-Disk Date = 3725051095
+Disk Date = 3725705058
 In Projects = "1,"
 Window Top = 33
 Window Left = 10
 Window Height = 349
 Window Width = 683
+Window Z-Order = 2
 
 [Tab Order]
 Tab 0001 = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
+Tab 0002 = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

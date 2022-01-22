@@ -18,7 +18,9 @@
 #define  PANEL_KeysTextBox                3       /* control type: string, callback function: (none) */
 #define  PANEL_SpaceshipTextBox           4       /* control type: string, callback function: (none) */
 #define  PANEL_SpaceshipHit               5       /* control type: LED, callback function: (none) */
-#define  PANEL_TIMER                      6       /* control type: timer, callback function: Timerfunc */
+#define  PANEL_ScoreControl               6       /* control type: numeric, callback function: (none) */
+#define  PANEL_LivesCountControl          7       /* control type: numeric, callback function: (none) */
+#define  PANEL_TIMER                      8       /* control type: timer, callback function: Timerfunc */
 
 
      /* Control Arrays: */

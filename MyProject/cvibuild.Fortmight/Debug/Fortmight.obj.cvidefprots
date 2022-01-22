@@ -78,6 +78,10 @@ Prototype="void updateGameState();"
 Class="Function"
 Prototype="void printDebugInformation();"
 
+[drawGameStatistics]
+Class="Function"
+Prototype="void drawGameStatistics();"
+
 [drawSpaceship]
 Class="Function"
 Prototype="void drawSpaceship();"

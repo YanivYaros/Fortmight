@@ -15,7 +15,11 @@
 static int panelHandle;
 
 
-
+//Todo:
+// Enemy
+// Spaceship Upgrade Weapon
+// Leadrboard
+// Sounds
 
 
 typedef struct
@@ -65,6 +69,8 @@ int lastProjectileCreatedTime;
 
 Asteroid* asteroids [MaxAsteroids];
 
+int livesCount;
+int score; 
 
 
 
@@ -121,6 +127,10 @@ void initilize ()
 {
 	int i;
 
+	livesCount = 5;
+	score = 0;
+	
+	
 	//seed rand number to time 0 and load files.
 	srand(time (0));
 
@@ -480,8 +490,8 @@ void updateHits()
 		{
 			if (isAsteroidHitWithSpaceship(asteroids[i]) == 1) 
 			{
-				//Todo:Game Over Reduce Score
-				SetCtrlVal (panelHandle, PANEL_SpaceshipHit, 1);
+				asteroids[i]->isAlive = 0;//Dead
+				livesCount--;
 			}
 		}
 	}
@@ -502,12 +512,14 @@ void updateHits()
 						{
 							asteroids[i]->isAlive = 0; //Dead
 							projectiles[j]->isAlive = 0; //Dead
+							score = score +20;
 						}
 						else
 						{
 							splitAsteroid(asteroids[i]);
 							projectiles[j]->isAlive = 0; //Dead  
 							asteroids[i]->isAlive = 0; //Dead
+							score = score +10; 
 						}
 					}
 					
@@ -558,6 +570,12 @@ void printDebugInformation()
 	//Debug - Print Spaceship State
 	sprintf(SpaceshipTextBoxStr, "%f %f %d", spaceship.x, spaceship.y, spaceship.angle);
 	SetCtrlVal (panelHandle, PANEL_SpaceshipTextBox, SpaceshipTextBoxStr);
+	
+}
+
+void drawGameStatistics(){
+	SetCtrlVal (panelHandle, PANEL_LivesCountControl, livesCount);
+	SetCtrlVal (panelHandle, PANEL_ScoreControl, score);
 }
 
 void drawSpaceship()
@@ -628,12 +646,11 @@ void drawAsteroids()
 }
 
 
-
-
 void draw ()
 {
 	printDebugInformation();
 
+	drawGameStatistics();
 
 	//Open Canvas
 	CanvasStartBatchDraw (panelHandle, PANEL_CANVAS);
@@ -660,6 +677,9 @@ void draw ()
 // **************** Game Loop & Timer ***************
 void gameLoop()
 {
+	if (livesCount == 0)
+		return;
+	
 	getUserInput();
 	updateGameState();
 	draw();
