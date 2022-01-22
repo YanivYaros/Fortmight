@@ -50,6 +50,18 @@ Prototype="void generateAsteroid();"
 Class="Function"
 Prototype="void updateAsteriods();"
 
+[isAsteroidHitWithSpaceship]
+Class="Function"
+Prototype="int isAsteroidHitWithSpaceship(Asteroid *asteroid);"
+
+[isAsteroidHitProjectile]
+Class="Function"
+Prototype="int isAsteroidHitProjectile(Asteroid *asteroid, Projectile *projectile);"
+
+[splitAsteroid]
+Class="Function"
+Prototype="void splitAsteroid(Asteroid *asteroidToSplit, int angle);"
+
 [updateHits]
 Class="Function"
 Prototype="void updateHits();"

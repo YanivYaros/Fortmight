@@ -6,7 +6,7 @@
 #include "Fortmight.h"
 #include "Math.h"
 
-#define MaxAsteroids 25
+#define MaxAsteroids 500
 #define MaxProjectiles 10
 
 #define CanvasSize 400 //Assuming Canvas is 450
@@ -394,6 +394,57 @@ void updateAsteriods()
 
 
 
+int isAsteroidHitWithSpaceship(Asteroid* asteroid)
+{
+	int spaceshipHitboxSize = 20;
+	if (asteroid->x >= spaceship.x-spaceshipHitboxSize && asteroid->x < spaceship.x+spaceshipHitboxSize && 
+			asteroid->y >= spaceship.y-spaceshipHitboxSize && asteroid->y < spaceship.y+spaceshipHitboxSize)
+	{
+		return 1;
+	}
+
+	return 0;
+}
+
+int isAsteroidHitProjectile(Asteroid* asteroid, Projectile* projectile)
+{
+	int hitboxSize = 20;
+	if (asteroid->x >= projectile->x-hitboxSize && asteroid->x < projectile->x+hitboxSize &&
+			asteroid->y >= projectile->y-hitboxSize && asteroid->y < projectile->y+hitboxSize)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void splitAsteroid(Asteroid* asteroidToSplit, int angle)
+{
+	int nextFreeSpace;
+	int i;
+	
+	//Find next free space
+	nextFreeSpace=-1;
+	for (i=0; i<MaxAsteroids; i++)
+	{
+		if (!asteroids[i]->isAlive)
+		{
+			nextFreeSpace = i;
+		}
+	}
+
+	if (nextFreeSpace == -1)
+		return;
+	
+	asteroids[nextFreeSpace]->isAlive = 1;
+	asteroids[nextFreeSpace]->x = asteroidToSplit->x; 
+	asteroids[nextFreeSpace]->y = asteroidToSplit->y;
+	asteroids[nextFreeSpace]->size = asteroidToSplit->size - 1;
+	asteroids[nextFreeSpace]->speed = asteroidToSplit->speed;
+	asteroids[nextFreeSpace]->angle = angle;
+	
+}
+
+
 
 void updateHits()
 {
@@ -408,17 +459,11 @@ void updateHits()
 	{
 		if (asteroids[i]->isAlive)
 		{
-
-			if (	asteroids[i]->x >= spaceship.x-20 &&
-					asteroids[i]->x < spaceship.x+20 &&
-					asteroids[i]->y >= spaceship.y-20 &&
-					asteroids[i]->y < spaceship.y+20
-			   )
+			if (isAsteroidHitWithSpaceship(asteroids[i]) == 1) 
 			{
 				//Todo:Game Over Reduce Score
 				SetCtrlVal (panelHandle, PANEL_SpaceshipHit, 1);
 			}
-
 		}
 	}
 
@@ -432,26 +477,22 @@ void updateHits()
 			{
 				if (projectiles[j]->isAlive)
 				{
-					if (asteroids[i]->x >= projectiles[j]->x-20 &&
-							asteroids[i]->x < projectiles[j]->x+20 &&
-							asteroids[i]->y >= projectiles[j]->y-20 &&
-							asteroids[i]->y < projectiles[j]->y+20)
+					if (isAsteroidHitProjectile(asteroids[i], projectiles[j]) == 1)
 					{
 						if (asteroids[i]->size == 1)
 						{
-							asteroids[i]->isAlive = 0;
+							asteroids[i]->isAlive = 0; //Dead
+							projectiles[j]->isAlive = 0; //Dead
 						}
-
-						if (asteroids[i]->size == 2)
+						else
 						{
-							//Todo: Split to 2 Size Of 1
-						}
-
-						if (asteroids[i]->size == 3)
-						{
-							//Todo: Split to 2 Size Of 2
+							splitAsteroid(asteroids[i], (asteroids[i]->angle+45)%360);
+							splitAsteroid(asteroids[i], (asteroids[i]->angle-45)%360);
+							projectiles[j]->isAlive = 0; //Dead  
+							asteroids[i]->isAlive = 0; //Dead
 						}
 					}
+					
 				}
 			}
 		}
@@ -553,7 +594,7 @@ void drawAsteroid(Asteroid* asteroid)
 {
 	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_BLUE);
 	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 1);
-	CanvasDrawRect (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 15, asteroid->size * 15), VAL_DRAW_FRAME);
+	CanvasDrawRect (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 20, asteroid->size * 20), VAL_DRAW_FRAME);
 }
 
 void drawAsteroids()
