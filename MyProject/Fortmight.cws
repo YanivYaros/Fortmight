@@ -1,6 +1,6 @@
 [Workspace Header]
 Version = 1700
-Pathname = "/c/Users/yaniv/OneDrive/Desktop/MyProject/Fortmight.cws"
+Pathname = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.cws"
 CVI Dir = "/c/program files (x86)/national instruments/cvi2017"
 CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI2017"
@@ -17,7 +17,7 @@ Window Top = 118
 Window Left = 214
 Window Bottom = 620
 Window Right = 1004
-Maximized = False
+Maximized = True
 Maximized Children = True
 Max32 Number Of Errors = 20
 Track Include File Dependencies = True
@@ -46,7 +46,17 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
-Path = "/c/Users/yaniv/OneDrive/Desktop/MyProject/Fortmight.uir"
+Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
+File Type = "CSource"
+Disk Date = 3725051912
+In Projects = "1,"
+Window Top = 95
+Window Left = 42
+Window Z-Order = 1
+Source Window State = "1,374,374,374,16,46,46,0,0,128,0,563,0,563,0,41,0,0,473,66,349,659,1,0,"
+
+[File 0002]
+Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
 File Type = "User Interface Resource"
 Disk Date = 3725051095
 In Projects = "1,"
@@ -55,18 +65,8 @@ Window Left = 10
 Window Height = 349
 Window Width = 683
 
-[File 0002]
-Path = "/c/Users/yaniv/OneDrive/Desktop/MyProject/Fortmight.c"
-File Type = "CSource"
-Disk Date = 3725051912
-In Projects = "1,"
-Window Top = 95
-Window Left = 42
-Window Z-Order = 1
-Source Window State = "1,374,374,374,16,46,46,0,0,128,0,563,0,563,0,33,0,0,473,66,349,659,1,0,"
-
 [Tab Order]
-Tab 0001 = "/c/Users/yaniv/OneDrive/Desktop/MyProject/Fortmight.c"
+Tab 0001 = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

@@ -29,15 +29,15 @@ HDRS = 	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\activ
 	"c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin"
 	;
 include Jamfile_instr ;
-LOCATE on "Fortmight.c" = "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject" ;
-Object "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\Fortmight.c" ;
-FILENUM on "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" = 1 ;
-DEFPROTS on "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" = "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj.cvidefprots" ;
-OUTFILE on "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" = "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj.out" ;
-PrjObjects += "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" ;
-Object "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\resources.res" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\resources.in.rc" ;
-Depends "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\resources.res" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\manifest.xml" ;
-MainFromObjects "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.exe" : $(PrjObjects) $(InstrObjects) ;
-Depends "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.exe" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\link_options.txt" ;
-Depends "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.exe" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\resources.res" ;
-Depends all : "c:\\Users\\yaniv\\OneDrive\\Desktop\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.exe" ;
+LOCATE on "Fortmight.c" = "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject" ;
+Object "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\Fortmight.c" ;
+FILENUM on "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" = 1 ;
+DEFPROTS on "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" = "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj.cvidefprots" ;
+OUTFILE on "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" = "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj.out" ;
+PrjObjects += "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.obj" ;
+Object "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\resources.res" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\resources.in.rc" ;
+Depends "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\resources.res" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\manifest.xml" ;
+MainFromObjects "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.exe" : $(PrjObjects) $(InstrObjects) ;
+Depends "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.exe" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\link_options.txt" ;
+Depends "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.exe" : "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\resources.res" ;
+Depends all : "c:\\Users\\yaniv\\OneDrive\\Desktop\\Fortmight\\MyProject\\cvibuild.Fortmight\\Debug\\Fortmight.exe" ;

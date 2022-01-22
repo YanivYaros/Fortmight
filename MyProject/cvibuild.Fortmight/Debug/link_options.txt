@@ -1,18 +1,18 @@
 -nologo
--out:c:\Users\yaniv\OneDrive\Desktop\MyProject\cvibuild.Fortmight\Debug\Fortmight.exe
+-out:c:\Users\yaniv\OneDrive\Desktop\Fortmight\MyProject\cvibuild.Fortmight\Debug\Fortmight.exe
 -arch:x86
 -timestamp
 -debug:2
--res:c:\Users\yaniv\OneDrive\Desktop\MyProject\cvibuild.Fortmight\Debug\resources.res
+-res:c:\Users\yaniv\OneDrive\Desktop\Fortmight\MyProject\cvibuild.Fortmight\Debug\resources.res
 -entry:_CVIWinMainStartupCodeForDebugging@0
 -base:0x400000
--linked:c:\Users\yaniv\OneDrive\Desktop\MyProject\cvibuild.Fortmight\Debug\linkersummary.txt
--dlldeps:c:\Users\yaniv\OneDrive\Desktop\MyProject\cvibuild.Fortmight\Debug\dlldependencies.txt
--licensing:c:\Users\yaniv\OneDrive\Desktop\MyProject\cvibuild.Fortmight\Debug\linkerlicensing.txt
--browsedeps:c:\Users\yaniv\OneDrive\Desktop\MyProject\cvibuild.Fortmight\Debug\moduledependencies.txt
+-linked:c:\Users\yaniv\OneDrive\Desktop\Fortmight\MyProject\cvibuild.Fortmight\Debug\linkersummary.txt
+-dlldeps:c:\Users\yaniv\OneDrive\Desktop\Fortmight\MyProject\cvibuild.Fortmight\Debug\dlldependencies.txt
+-licensing:c:\Users\yaniv\OneDrive\Desktop\Fortmight\MyProject\cvibuild.Fortmight\Debug\linkerlicensing.txt
+-browsedeps:c:\Users\yaniv\OneDrive\Desktop\Fortmight\MyProject\cvibuild.Fortmight\Debug\moduledependencies.txt
 -stackreserve:1048576
 -stackcommit:4096
--in:c:\Users\yaniv\OneDrive\Desktop\MyProject\cvibuild.Fortmight\Debug\Fortmight.obj
+-in:c:\Users\yaniv\OneDrive\Desktop\Fortmight\MyProject\cvibuild.Fortmight\Debug\Fortmight.obj
 -more:c:\program files (x86)\national instruments\cvi2017\bin\msvc\cvistart.lib
 -more:c:\program files (x86)\national instruments\cvi2017\bin\msvc\cvi.lib
 -more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\advapi32.lib
