@@ -1,0 +1,84 @@
+[Key_DownFunc]
+Class="Function"
+Prototype="int Key_DownFunc(int panel, int message, unsigned int *wParam, unsigned int *lParam, void *callbackData);"
+
+[Key_UpFunc]
+Class="Function"
+Prototype="int Key_UpFunc(int panel, int message, unsigned int *wParam, unsigned int *lParam, void *callbackData);"
+
+[Connect_To_Windows_Events]
+Class="Function"
+Prototype="void Connect_To_Windows_Events();"
+
+[initilize]
+Class="Function"
+Prototype="void initilize();"
+
+[terminate]
+Class="Function"
+Prototype="void terminate();"
+
+[main]
+Class="Function"
+Prototype="int main(int argc, char **argv);"
+
+[exitfunc]
+Class="Function"
+Prototype="int exitfunc(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
+[getUserInput]
+Class="Function"
+Prototype="void getUserInput();"
+
+[toRadians]
+Class="Function"
+Prototype="double toRadians(double degrees);"
+
+[updateSpaceship]
+Class="Function"
+Prototype="void updateSpaceship();"
+
+[updateProjectiles]
+Class="Function"
+Prototype="void updateProjectiles();"
+
+[updateAsteriods]
+Class="Function"
+Prototype="void updateAsteriods();"
+
+[updateHits]
+Class="Function"
+Prototype="void updateHits();"
+
+[updateGameState]
+Class="Function"
+Prototype="void updateGameState();"
+
+[printDebugInformation]
+Class="Function"
+Prototype="void printDebugInformation();"
+
+[drawSpaceship]
+Class="Function"
+Prototype="void drawSpaceship();"
+
+[drawProjectiles]
+Class="Function"
+Prototype="void drawProjectiles();"
+
+[drawAsteroids]
+Class="Function"
+Prototype="void drawAsteroids();"
+
+[draw]
+Class="Function"
+Prototype="void draw();"
+
+[gameLoop]
+Class="Function"
+Prototype="void gameLoop();"
+
+[Timerfunc]
+Class="Function"
+Prototype="int Timerfunc(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
