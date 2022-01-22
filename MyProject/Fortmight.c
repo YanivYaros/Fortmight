@@ -6,7 +6,7 @@
 #include "Fortmight.h"
 #include "Math.h"
 
-#define MaxAsteroids 500
+#define MaxAsteroids 50
 #define MaxProjectiles 10
 
 #define CanvasSize 400 //Assuming Canvas is 450
@@ -310,8 +310,21 @@ void generateAsteroid()
 	double randomNumber;
 	int creationSide;
 	int nextFreeSpace;
-
-
+	int freeSpaceCount;
+	
+	
+	freeSpaceCount = 0;
+	for (i=0; i<MaxAsteroids; i++)
+	{
+		if (!asteroids[i]->isAlive)
+		{
+			freeSpaceCount++;
+		}
+	}
+	
+	if (freeSpaceCount < MaxAsteroids/2)
+		return;
+	
 	//Find next free space
 	nextFreeSpace=-1;
 	for (i=0; i<MaxAsteroids; i++)
@@ -408,7 +421,7 @@ int isAsteroidHitWithSpaceship(Asteroid* asteroid)
 
 int isAsteroidHitProjectile(Asteroid* asteroid, Projectile* projectile)
 {
-	int hitboxSize = 20;
+	int hitboxSize = asteroid->size*15;
 	if (asteroid->x >= projectile->x-hitboxSize && asteroid->x < projectile->x+hitboxSize &&
 			asteroid->y >= projectile->y-hitboxSize && asteroid->y < projectile->y+hitboxSize)
 	{
@@ -417,7 +430,9 @@ int isAsteroidHitProjectile(Asteroid* asteroid, Projectile* projectile)
 	return 0;
 }
 
-void splitAsteroid(Asteroid* asteroidToSplit, int angle)
+
+
+void splitAsteroidToAngle(Asteroid* asteroidToSplit, int angle)
 {
 	int nextFreeSpace;
 	int i;
@@ -444,7 +459,11 @@ void splitAsteroid(Asteroid* asteroidToSplit, int angle)
 	
 }
 
-
+void splitAsteroid(Asteroid* asteroidToSplit) 
+{
+	splitAsteroidToAngle(asteroidToSplit, (asteroidToSplit->angle+45)%360);
+	splitAsteroidToAngle(asteroidToSplit, (asteroidToSplit->angle-45)%360);
+}
 
 void updateHits()
 {
@@ -486,8 +505,7 @@ void updateHits()
 						}
 						else
 						{
-							splitAsteroid(asteroids[i], (asteroids[i]->angle+45)%360);
-							splitAsteroid(asteroids[i], (asteroids[i]->angle-45)%360);
+							splitAsteroid(asteroids[i]);
 							projectiles[j]->isAlive = 0; //Dead  
 							asteroids[i]->isAlive = 0; //Dead
 						}
