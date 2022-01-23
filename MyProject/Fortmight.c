@@ -5,6 +5,7 @@
 #include <userint.h>
 #include "Fortmight.h"
 #include "Math.h"
+#include "bass.h"
 
 #define MaxAsteroids 50
 #define MaxProjectiles 10
@@ -13,6 +14,11 @@
 #define M_PI 3.1415926535
 
 static int panelHandle;
+
+HSTREAM Scoresound;
+HSTREAM Livelosssound; 
+HSTREAM Projectilesound; 
+HSTREAM Upgradesound; 
 
 
 //Todo:
@@ -187,11 +193,17 @@ void initilize ()
 	
 	
 	GetBitmapFromFile ("images\\asteroid.png",&astroid_bitmap);
-
+	
+	
 }
 
 void terminate()
 {
+	BASS_StreamFree(Scoresound);
+	BASS_StreamFree(Livelosssound);
+	BASS_StreamFree(Projectilesound);
+	BASS_StreamFree(Upgradesound);
+	
 }
 
 int main (int argc, char *argv[])
@@ -202,6 +214,13 @@ int main (int argc, char *argv[])
 		return -1;
 	initilize();
 	DisplayPanel (panelHandle);
+	
+	BASS_Init( -1,44100, 0,0,NULL);
+    Scoresound = BASS_StreamCreateFile(FALSE,"Scoresound.mp3",0,0,0);
+	Livelosssound = BASS_StreamCreateFile(FALSE,"Livelosssound.mp3",0,0,0); 
+	Projectilesound = BASS_StreamCreateFile(FALSE,"Projectilesound.mp3",0,0,0); 
+	Upgradesound = BASS_StreamCreateFile(FALSE,"Upgradesound.mp3",0,0,0);
+	
 	RunUserInterface ();
 	terminate();
 	DiscardPanel (panelHandle);
@@ -319,6 +338,8 @@ void updateProjectiles()
 			projectiles[projectileIndex]->isAlive =1;
 			projectiles[projectileIndex]->isEnemy = 0;
 			projectileIndex = (projectileIndex + 1) % MaxProjectiles;
+			BASS_ChannelPlay(Projectilesound,TRUE);
+
 		}
 	}
 
@@ -543,6 +564,8 @@ void updateHits()
 			{
 				asteroids[i]->isAlive = 0;//Dead
 				livesCount--;
+				BASS_ChannelPlay(Livelosssound,TRUE);
+
 			}
 		}
 	}
@@ -564,6 +587,7 @@ void updateHits()
 							asteroids[i]->isAlive = 0; //Dead
 							projectiles[j]->isAlive = 0; //Dead
 							score = score +20;
+							BASS_ChannelPlay(Scoresound,TRUE);
 						}
 						else
 						{
@@ -571,6 +595,7 @@ void updateHits()
 							projectiles[j]->isAlive = 0; //Dead  
 							asteroids[i]->isAlive = 0; //Dead
 							score = score +10; 
+							BASS_ChannelPlay(Scoresound,TRUE); 
 						}
 					}
 					
@@ -804,9 +829,12 @@ void drawAsteroid(Asteroid* asteroid)
 	
 	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_BLUE);
 	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 1);
+	
+	//draw asteroids as rectengels
 	//CanvasDrawRect (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 20, asteroid->size * 20), VAL_DRAW_FRAME);
-	//CanvasDrawRoundedRect (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 20, asteroid->size * 20), 50, 50, VAL_DRAW_FRAME);
-	//CanvasDrawArc (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 8, asteroid->size * 8), 0, -1800, VAL_DRAW_FRAME);
+	
+	//Bitmap asteroid Drawing
+	
 	CanvasDrawBitmap (panelHandle, PANEL_CANVAS, astroid_bitmap, MakeRect(256,256,256,256), MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 20, asteroid->size * 20));
 	
  }

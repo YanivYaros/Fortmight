@@ -1,6 +1,7 @@
 Fortmight.obj
 cvi.lib
 cvistart.lib
+bass.lib
 toolbox.obj
 advapi32.lib
 cviauto.lib

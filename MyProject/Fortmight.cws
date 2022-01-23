@@ -48,12 +48,12 @@ Batch Build Debug = False
 [File 0001]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
 File Type = "CSource"
-Disk Date = 3725807675
+Disk Date = 3725811205
 In Projects = "1,"
 Window Top = 95
 Window Left = 34
 Window Z-Order = 1
-Source Window State = "1,809,809,809,86,88,88,0,0,128,0,302,0,862,0,33,714,13,808,6,310,683,1,22,"
+Source Window State = "1,18,18,18,8,17,17,0,0,128,0,330,0,890,0,33,212,0,221,64,310,683,1,22,"
 
 [File 0002]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
@@ -65,6 +65,12 @@ Window Left = 10
 Window Height = 349
 Window Width = 683
 Window Z-Order = 2
+
+[File 0003]
+Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/bass.lib"
+File Type = "Library"
+Disk Date = 3707385940
+In Projects = "1,"
 
 [Tab Order]
 Tab 0001 = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"

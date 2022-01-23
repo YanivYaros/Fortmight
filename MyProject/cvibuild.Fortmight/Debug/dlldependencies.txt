@@ -1,5 +1,7 @@
 cvi.lib
 cvirte.dll
+bass.lib
+bass.dll
 advapi32.lib
 ADVAPI32.dll
 gdi32.lib
