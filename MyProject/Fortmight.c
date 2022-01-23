@@ -83,6 +83,7 @@ int lastEnemyProjectileCreatedTime= 0;
 
 int livesCount;
 int score; 
+int astroid_bitmap;
 
 
 
@@ -183,6 +184,9 @@ void initilize ()
 		p->speed = 0;
 		asteroids[i]=p;
 	}
+	
+	
+	GetBitmapFromFile ("images\\asteroid.png",&astroid_bitmap);
 
 }
 
@@ -321,8 +325,8 @@ void updateProjectiles()
 
 	for (i=0; i<MaxProjectiles; i++)
 	{
-		projectiles[i]->x = projectiles[i]->x + (10 * cos(toRadians(projectiles[i]->angle)));
-		projectiles[i]->y = projectiles[i]->y + (10 * sin(toRadians(projectiles[i]->angle)));
+		projectiles[i]->x = projectiles[i]->x + (15 * cos(toRadians(projectiles[i]->angle)));
+		projectiles[i]->y = projectiles[i]->y + (15 * sin(toRadians(projectiles[i]->angle)));
 
 		if (projectiles[i]->x > CanvasSize || projectiles[i]->x < 0)
 			projectiles[i]->isAlive = 0;
@@ -796,10 +800,16 @@ void drawProjectiles()
 
 void drawAsteroid(Asteroid* asteroid)
 {
+
+	
 	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_BLUE);
 	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 1);
-	CanvasDrawRect (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 20, asteroid->size * 20), VAL_DRAW_FRAME);
-}
+	//CanvasDrawRect (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 20, asteroid->size * 20), VAL_DRAW_FRAME);
+	//CanvasDrawRoundedRect (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 20, asteroid->size * 20), 50, 50, VAL_DRAW_FRAME);
+	//CanvasDrawArc (panelHandle, PANEL_CANVAS, MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 8, asteroid->size * 8), 0, -1800, VAL_DRAW_FRAME);
+	CanvasDrawBitmap (panelHandle, PANEL_CANVAS, astroid_bitmap, MakeRect(256,256,256,256), MakeRect((int)asteroid->y, (int)asteroid->x, asteroid->size * 20, asteroid->size * 20));
+	
+ }
 
 void drawAsteroids()
 {
