@@ -709,10 +709,26 @@ void drawGameStatistics(){
 	SetCtrlVal (panelHandle, PANEL_ScoreControl, score);
 }
 
+void drawAfterburn()
+{
+	Point enginePoint;
+	Point afterburnerPoint;
+		 //set PenColor and Dimentions
+		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_YELLOW);
+		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 6);
+		
+		//Draw afterburner
+		enginePoint = MakePoint ((int)spaceship.x + (-15 * cos(toRadians(spaceship.angle))),(int)spaceship.y + (-15 * sin(toRadians(spaceship.angle))));
+		afterburnerPoint = MakePoint ((int)spaceship.x + (-20 * cos(toRadians(spaceship.angle))),(int)spaceship.y + (-20 * sin(toRadians(spaceship.angle)))); 
+		CanvasDrawLine (panelHandle, PANEL_CANVAS,enginePoint,afterburnerPoint);
+	
+}
+
 void drawSpaceship()
 {
 
 	Point tipPoint;
+	
 
 	Point one_end;
 	Point two_end;
@@ -722,33 +738,36 @@ void drawSpaceship()
 	
 
 
-	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_BLACK);
-	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 4);
-
 
 
 	if (userInputs.isKeyUpPressed)
 	{
-		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_YELLOW);
-		SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 4);
+		drawAfterburn();
 	}
-
-
+	
+	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_BLACK);
+	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 4);
+	
+	//draw spaceshiptip
 	tipPoint = MakePoint((int)spaceship.x,(int)spaceship.y);
 
+	//draw spaceship wings
 	one_end = MakePoint((int)spaceship.x + (20 * cos(toRadians(spaceship.angle-140))),(int)spaceship.y + (20 * sin(toRadians(spaceship.angle-140))));
 	CanvasDrawLine(panelHandle, PANEL_CANVAS,tipPoint,one_end);
 
 	two_end = MakePoint((int)spaceship.x + (20 * cos(toRadians(spaceship.angle+140))),(int)spaceship.y + (20 * sin(toRadians(spaceship.angle+140))));
 	CanvasDrawLine(panelHandle, PANEL_CANVAS,tipPoint,two_end);
 	
+	//draw spaceship bottom line
 	one_mid = MakePoint((int)spaceship.x + (15 * cos(toRadians(spaceship.angle-140))),(int)spaceship.y + (15 * sin(toRadians(spaceship.angle-140))));
-
+	
     two_mid = MakePoint((int)spaceship.x + (15 * cos(toRadians(spaceship.angle+140))),(int)spaceship.y + (15 * sin(toRadians(spaceship.angle+140))));
 	CanvasDrawLine(panelHandle, PANEL_CANVAS,one_mid,two_mid); 
 
 	
 }
+
+ 
 
 
 void drawProjectiles()

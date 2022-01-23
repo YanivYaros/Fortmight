@@ -98,6 +98,10 @@ Prototype="void printDebugInformation();"
 Class="Function"
 Prototype="void drawGameStatistics();"
 
+[drawAfterburn]
+Class="Function"
+Prototype="void drawAfterburn();"
+
 [drawSpaceship]
 Class="Function"
 Prototype="void drawSpaceship();"
