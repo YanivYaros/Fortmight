@@ -193,6 +193,11 @@ void initilize ()
 	
 	
 	GetBitmapFromFile ("images\\asteroid.png",&astroid_bitmap);
+	BASS_Init( -1,44100, 0,0,NULL);
+    Scoresound = BASS_StreamCreateFile(FALSE,"Scoresound.mp3",0,0,0);
+	Livelosssound = BASS_StreamCreateFile(FALSE,"Livelosssound.mp3",0,0,0); 
+	Projectilesound = BASS_StreamCreateFile(FALSE,"Projectilesound.mp3",0,0,0); 
+	Upgradesound = BASS_StreamCreateFile(FALSE,"Upgradesound.mp3",0,0,0);
 	
 	
 }
@@ -214,13 +219,6 @@ int main (int argc, char *argv[])
 		return -1;
 	initilize();
 	DisplayPanel (panelHandle);
-	
-	BASS_Init( -1,44100, 0,0,NULL);
-    Scoresound = BASS_StreamCreateFile(FALSE,"Scoresound.mp3",0,0,0);
-	Livelosssound = BASS_StreamCreateFile(FALSE,"Livelosssound.mp3",0,0,0); 
-	Projectilesound = BASS_StreamCreateFile(FALSE,"Projectilesound.mp3",0,0,0); 
-	Upgradesound = BASS_StreamCreateFile(FALSE,"Upgradesound.mp3",0,0,0);
-	
 	RunUserInterface ();
 	terminate();
 	DiscardPanel (panelHandle);
@@ -614,6 +612,7 @@ void updateHits()
 			{
 				projectiles[j]->isAlive = 0; //Dead
 				livesCount--; //Reduce Score
+				BASS_ChannelPlay(Livelosssound,TRUE);
 			}
 		}
 	}
@@ -629,6 +628,7 @@ void updateHits()
 				projectiles[j]->isAlive = 0; //Dead
 				enemyShip.isAlive = 0;
 				score = score +50;
+				BASS_ChannelPlay(Scoresound,TRUE);
 			}
 		}
 	}
