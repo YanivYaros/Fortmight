@@ -90,6 +90,7 @@ int lastEnemyProjectileCreatedTime= 0;
 int livesCount;
 int score; 
 int astroid_bitmap;
+int hearts_bitmap;
 
 
 
@@ -193,6 +194,8 @@ void initilize ()
 	
 	
 	GetBitmapFromFile ("images\\asteroid.png",&astroid_bitmap);
+	GetBitmapFromFile ("images\\Hearts.png",&hearts_bitmap);
+	
 	BASS_Init( -1,44100, 0,0,NULL);
     Scoresound = BASS_StreamCreateFile(FALSE,"Scoresound.mp3",0,0,0);
 	Livelosssound = BASS_StreamCreateFile(FALSE,"Livelosssound.mp3",0,0,0); 
@@ -208,6 +211,8 @@ void terminate()
 	BASS_StreamFree(Livelosssound);
 	BASS_StreamFree(Projectilesound);
 	BASS_StreamFree(Upgradesound);
+	DiscardBitmap (astroid_bitmap);
+	DiscardBitmap (hearts_bitmap); 
 	
 }
 
@@ -735,6 +740,11 @@ void printDebugInformation()
 
 void drawGameStatistics(){
 	SetCtrlVal (panelHandle, PANEL_LivesCountControl, livesCount);
+	CanvasDrawBitmap (panelHandle, PANEL_HEARTSCANVAS, hearts_bitmap, MakeRect ((5-livesCount)*42,0,46,225),VAL_ENTIRE_OBJECT);
+	if(livesCount==0)
+	{
+		CanvasDrawText (panelHandle, PANEL_HEARTSCANVAS, "Game Over", VAL_APP_META_FONT, MakeRect (0,0,30,200), VAL_CENTER);
+	}
 	SetCtrlVal (panelHandle, PANEL_ScoreControl, score);
 }
 

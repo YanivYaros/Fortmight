@@ -21,6 +21,7 @@
 #define  PANEL_ScoreControl               6       /* control type: numeric, callback function: (none) */
 #define  PANEL_LivesCountControl          7       /* control type: numeric, callback function: (none) */
 #define  PANEL_TIMER                      8       /* control type: timer, callback function: Timerfunc */
+#define  PANEL_HEARTSCANVAS               9       /* control type: canvas, callback function: (none) */
 
 
      /* Control Arrays: */
