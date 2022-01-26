@@ -24,7 +24,7 @@ HSTREAM Upgradesound;
 //Todo:
 // Spaceship Upgrade Weapon
 // Leadrboard
-// Sounds and Background
+// Sounds and Background DONE 
 // Smart Enemy
 // Drift Spaceship
 
@@ -91,6 +91,7 @@ int livesCount;
 int score; 
 int astroid_bitmap;
 int hearts_bitmap;
+int space_bitmap;
 
 
 
@@ -195,7 +196,8 @@ void initilize ()
 	
 	GetBitmapFromFile ("images\\asteroid.png",&astroid_bitmap);
 	GetBitmapFromFile ("images\\Hearts.png",&hearts_bitmap);
-	
+	GetBitmapFromFile ("images\\spacebackround.png",&space_bitmap);
+
 	BASS_Init( -1,44100, 0,0,NULL);
     Scoresound = BASS_StreamCreateFile(FALSE,"Scoresound.mp3",0,0,0);
 	Livelosssound = BASS_StreamCreateFile(FALSE,"Livelosssound.mp3",0,0,0); 
@@ -213,7 +215,7 @@ void terminate()
 	BASS_StreamFree(Upgradesound);
 	DiscardBitmap (astroid_bitmap);
 	DiscardBitmap (hearts_bitmap); 
-	
+	DiscardBitmap(space_bitmap);
 }
 
 int main (int argc, char *argv[])
@@ -784,7 +786,7 @@ void drawSpaceship()
 		drawAfterburn();
 	}
 	
-	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_BLACK);
+	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, MakeColor(192,192,192)); //silvercolor
 	SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_WIDTH, 4);
 	
 	//draw spaceshiptip
@@ -824,7 +826,7 @@ void drawProjectiles()
 			}
 			else
 			{
-				SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, VAL_BLACK);
+				SetCtrlAttribute (panelHandle, PANEL_CANVAS, ATTR_PEN_COLOR, MakeColor(192,192,192));//silver color
 			}
 			
 			CanvasDrawPoint (panelHandle, PANEL_CANVAS, MakePoint((int)projectiles[i]->x,(int)projectiles[i]->y));
@@ -882,7 +884,8 @@ void draw ()
 
 	//Open Canvas
 	CanvasStartBatchDraw (panelHandle, PANEL_CANVAS);
-	CanvasClear (panelHandle, PANEL_CANVAS, VAL_ENTIRE_OBJECT);
+	//CanvasClear (panelHandle, PANEL_CANVAS, VAL_ENTIRE_OBJECT);
+	CanvasDrawBitmap (panelHandle, PANEL_CANVAS, space_bitmap, VAL_ENTIRE_OBJECT, VAL_ENTIRE_OBJECT);
 
 	//Draw On Canvas
 	drawSpaceship();
