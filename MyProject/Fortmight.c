@@ -23,11 +23,17 @@ HSTREAM Projectilesound;
 HSTREAM Upgradesound; 
 
 
+FILE *fp; 
+ 
+ 
 //Todo:
 // Spaceship Upgrade Weapon
 // Leadrboard
 // Smart Enemy
 // Drift Spaceship
+// Demo
+// HELP
+// AboutPanel
 
 
 
@@ -206,7 +212,6 @@ void initilize ()
 	Livelosssound = BASS_StreamCreateFile(FALSE,"Livelosssound.mp3",0,0,0); 
 	Projectilesound = BASS_StreamCreateFile(FALSE,"Projectilesound.mp3",0,0,0); 
 	Upgradesound = BASS_StreamCreateFile(FALSE,"Upgradesound.mp3",0,0,0);
-	
 	
 }
 
@@ -751,11 +756,37 @@ void updateEnemy()
 	
 	
 }
+  
+void updateLeaderBord()
+  { 
+	  char nickname[10];
+	  int i;
+	  int recordscore;
+	  
+	  
+	  GetCtrlVal (panelHandle2, MENUPANEL_NAMESTRING,nickname);
+	  SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (1,1), nickname);
+	  
+	  for(i=1;i<11;i++)
+	  {
+		  GetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint(2,i), &recordscore);
+		  if(score>recordscore)
+		  {
+		   SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (1,i), nickname);
+		   SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (2,i), score);
+		   break;
+		  }
+		  
+	  }
+	  
+	   	SavePanelState (panelHandle3, "leaderbordpaneldata.txt", 0); 
 
+	  
+  }
 
 void gameOver()
-{
-
+{	 
+	updateLeaderBord(); 
 	SetCtrlAttribute (panelHandle, PANEL_RETURNTOMENU, ATTR_VISIBLE, 1);
 	SetCtrlAttribute (panelHandle, PANEL_TIMER, ATTR_ENABLED, 0);
 
@@ -1028,6 +1059,7 @@ int CVICALLBACK OpenLeaderBord (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 			 
+			 RecallPanelState (panelHandle3, "leaderbordpaneldata.txt", 0);
 			 DisplayPanel (panelHandle3);
 			 
 			break;

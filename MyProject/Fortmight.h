@@ -20,8 +20,10 @@
 #define  MENUPANEL_ABOUTBUTTON            2       /* control type: command, callback function: AboutME */
 #define  MENUPANEL_LEADERBORDBUTTON       3       /* control type: command, callback function: OpenLeaderBord */
 #define  MENUPANEL_STARTBUTTON            4       /* control type: command, callback function: StartGame */
-#define  MENUPANEL_TEXTMSG                5       /* control type: textMsg, callback function: (none) */
-#define  MENUPANEL_PICTURE                6       /* control type: picture, callback function: (none) */
+#define  MENUPANEL_NAMESTRING             5       /* control type: string, callback function: (none) */
+#define  MENUPANEL_TEXTMSG_2              6       /* control type: textMsg, callback function: (none) */
+#define  MENUPANEL_PICTURE                7       /* control type: picture, callback function: (none) */
+#define  MENUPANEL_TEXTMSG                8       /* control type: textMsg, callback function: (none) */
 
 #define  PANEL                            3       /* callback function: exitfunc */
 #define  PANEL_CANVAS                     2       /* control type: canvas, callback function: (none) */

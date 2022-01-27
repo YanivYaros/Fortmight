@@ -94,6 +94,10 @@ Prototype="void updateHits();"
 Class="Function"
 Prototype="void updateEnemy();"
 
+[updateLeaderBord]
+Class="Function"
+Prototype="void updateLeaderBord();"
+
 [gameOver]
 Class="Function"
 Prototype="void gameOver();"
