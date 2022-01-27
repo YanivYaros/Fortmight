@@ -14,6 +14,8 @@
 #define M_PI 3.1415926535
 
 static int panelHandle;
+static int panelHandle2;
+static int panelHandle3;
 
 HSTREAM Scoresound;
 HSTREAM Livelosssound; 
@@ -24,9 +26,10 @@ HSTREAM Upgradesound;
 //Todo:
 // Spaceship Upgrade Weapon
 // Leadrboard
-// Sounds and Background DONE 
 // Smart Enemy
 // Drift Spaceship
+
+
 
 
 typedef struct
@@ -224,11 +227,17 @@ int main (int argc, char *argv[])
 		return -1;	/* out of memory */
 	if ((panelHandle = LoadPanel (0, "Fortmight.uir", PANEL)) < 0)
 		return -1;
+	if ((panelHandle2 = LoadPanel (0, "Fortmight.uir", MENUPANEL)) < 0)
+		return -1;
+	if ((panelHandle3 = LoadPanel (0, "Fortmight.uir", LBPANEL)) < 0)
+		return -1;
 	initilize();
-	DisplayPanel (panelHandle);
+	DisplayPanel (panelHandle2);
 	RunUserInterface ();
 	terminate();
 	DiscardPanel (panelHandle);
+	DiscardPanel (panelHandle2);
+	DiscardPanel (panelHandle3); 
 	return 0;
 }
 
@@ -249,6 +258,50 @@ int CVICALLBACK exitfunc (int panel, int event, void *callbackData,
 	}
 	return 0;
 }
+
+
+
+int CVICALLBACK Menufunc (int panel, int event, void *callbackData,
+						  int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_GOT_FOCUS:
+
+			break;
+		case EVENT_LOST_FOCUS:
+
+			break;
+		case EVENT_CLOSE:
+			HidePanel (panelHandle2);
+			QuitUserInterface (0); 
+			break;
+	}
+	return 0;
+}
+
+
+int CVICALLBACK leaderBordpanel (int panel, int event, void *callbackData,
+								 int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_GOT_FOCUS:
+
+			break;
+		case EVENT_LOST_FOCUS:
+
+			break;
+		case EVENT_CLOSE:
+			HidePanel (panelHandle3); 
+			break;
+	}
+	return 0;
+}
+
+
+
+
 
 //***********************************************
 
@@ -699,6 +752,17 @@ void updateEnemy()
 	
 }
 
+
+void gameOver()
+{
+
+	SetCtrlAttribute (panelHandle, PANEL_RETURNTOMENU, ATTR_VISIBLE, 1);
+	SetCtrlAttribute (panelHandle, PANEL_TIMER, ATTR_ENABLED, 0);
+
+	
+	
+}
+
 void updateGameState()
 {
 	updateSpaceship();
@@ -711,6 +775,8 @@ void updateGameState()
 
 	updateHits();
 }
+
+
 
 //***********************************************
 
@@ -910,7 +976,9 @@ void draw ()
 void gameLoop()
 {
 	if (livesCount == 0)
-		return;
+	{
+		gameOver();
+	}	
 	
 	getUserInput();
 	updateGameState();
@@ -931,3 +999,70 @@ int CVICALLBACK Timerfunc (int panel, int control, int event,
 }
 
 //***********************************************
+
+
+
+//******************MAIN MENU********************
+
+int CVICALLBACK StartGame (int panel, int control, int event,
+						   void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+
+			DisplayPanel (panelHandle);
+			HidePanel (panelHandle2);
+			SetCtrlAttribute (panelHandle, PANEL_TIMER, ATTR_ENABLED,1);
+			
+			
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK OpenLeaderBord (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			 
+			 DisplayPanel (panelHandle3);
+			 
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK AboutME (int panel, int control, int event,
+						 void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			  
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK ReturnToMenu (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+
+				 DisplayPanel (panelHandle2);
+				 HidePanel(panelHandle);
+				 SetCtrlAttribute (panelHandle, PANEL_RETURNTOMENU, ATTR_VISIBLE, 0);
+				 score=0;
+				 livesCount=5;
+			
+			
+			break;
+	}
+	return 0;
+}
+

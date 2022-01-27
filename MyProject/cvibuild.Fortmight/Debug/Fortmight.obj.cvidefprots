@@ -26,6 +26,14 @@ Prototype="int main(int argc, char **argv);"
 Class="Function"
 Prototype="int exitfunc(int panel, int event, void *callbackData, int eventData1, int eventData2);"
 
+[Menufunc]
+Class="Function"
+Prototype="int Menufunc(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
+[leaderBordpanel]
+Class="Function"
+Prototype="int leaderBordpanel(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
 [getUserInput]
 Class="Function"
 Prototype="void getUserInput();"
@@ -86,6 +94,10 @@ Prototype="void updateHits();"
 Class="Function"
 Prototype="void updateEnemy();"
 
+[gameOver]
+Class="Function"
+Prototype="void gameOver();"
+
 [updateGameState]
 Class="Function"
 Prototype="void updateGameState();"
@@ -133,4 +145,20 @@ Prototype="void gameLoop();"
 [Timerfunc]
 Class="Function"
 Prototype="int Timerfunc(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[StartGame]
+Class="Function"
+Prototype="int StartGame(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[OpenLeaderBord]
+Class="Function"
+Prototype="int OpenLeaderBord(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[AboutME]
+Class="Function"
+Prototype="int AboutME(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[ReturnToMenu]
+Class="Function"
+Prototype="int ReturnToMenu(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 

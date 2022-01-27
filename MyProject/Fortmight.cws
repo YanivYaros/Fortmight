@@ -30,7 +30,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 3
+Number of Opened Files = 1
 Window Confinement Region Enabled = True
 MainColumnWidth = 196
 FileDateColumnWidth = 70
@@ -48,23 +48,23 @@ Batch Build Debug = False
 [File 0001]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
 File Type = "CSource"
-Disk Date = 3726060055
+Disk Date = 3726140032
 In Projects = "1,"
 Window Top = 95
 Window Left = 34
 Window Z-Order = 1
-Source Window State = "1,828,828,828,77,85,77,0,0,128,0,343,0,903,0,33,84,0,98,36,310,683,1,22,"
+Source Window State = "1,1030,1031,1031,0,0,0,0,0,128,0,345,0,972,0,33,14,0,31,31,310,683,1,22,"
 
 [File 0002]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
 File Type = "User Interface Resource"
-Disk Date = 3726058894
+Disk Date = 3726140032
 In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Height = 349
-Window Width = 683
-Window Z-Order = 2
+Window Top = 127
+Window Left = 56
+Window Height = 384
+Window Width = 949
+Window Released = True
 
 [File 0003]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/bass.lib"
@@ -72,20 +72,8 @@ File Type = "Library"
 Disk Date = 3707385940
 In Projects = "1,"
 
-[File 0004]
-Path = "/c/Program Files (x86)/National Instruments/CVI2017/include/userint.h"
-File Type = "Include"
-Disk Date = 3573586800
-In Projects = ""
-Window Top = 64
-Window Left = 26
-Window Z-Order = 3
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,21,2597,0,2613,102,297,683,1,0,"
-
 [Tab Order]
 Tab 0001 = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
-Tab 0002 = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
-Tab 0003 = "/c/Program Files (x86)/National Instruments/CVI2017/include/userint.h"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True
