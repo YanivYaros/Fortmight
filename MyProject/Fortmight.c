@@ -759,25 +759,38 @@ void updateEnemy()
   
 void updateLeaderBord()
   { 
-	  char nickname[10];
+	  char nickname[20];
+	  char recordname[20];
 	  int i;
 	  int recordscore;
+	  int count=10;
+	  
 	  
 	  
 	  GetCtrlVal (panelHandle2, MENUPANEL_NAMESTRING,nickname);
-	  SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (1,1), nickname);
-	  
-	  for(i=1;i<11;i++)
+	  GetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint(2,10), &recordscore);
+	  if(score>recordscore)
 	  {
-		  GetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint(2,i), &recordscore);
-		  if(score>recordscore)
-		  {
-		   SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (1,i), nickname);
-		   SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (2,i), score);
-		   break;
-		  }
+		  SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (1,10), nickname);
+		  SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (2,10), score);
+	  }
+	  for(i=1;i<10;i++)
+	  {
+		 GetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint(2,10-i), &recordscore);
+		 GetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint(1,10-i), recordname);
+		 if(recordscore<score)
+		 {
+		  SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (1,10-i), nickname);
+		  SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (2,10-i), score);
+		  SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (1,count), recordname);
+		  SetTableCellVal (panelHandle3, LBPANEL_LEADERBORDTABLE, MakePoint (2,count), recordscore);
+		  count--;
+		 } 
+		  
 		  
 	  }
+	  
+	  
 	  
 	   	SavePanelState (panelHandle3, "leaderbordpaneldata.txt", 0); 
 
