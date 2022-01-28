@@ -33,7 +33,7 @@ FILE *fp;
 // Drift Spaceship
 // Demo
 // HELP
-// AboutPanel
+
 
 
 
@@ -1135,7 +1135,8 @@ int CVICALLBACK ReturnToMenu (int panel, int control, int event,
 void CVICALLBACK OpenTutorialDoc (int menuBar, int menuItem, void *callbackData,
 								  int panel)
 {
-	//opendoc
+   OpenDocumentInDefaultViewer ("fortmightexplentiondoc.docx", VAL_NO_ZOOM);
+
 }
 
 void CVICALLBACK OpenDemoVideo (int menuBar, int menuItem, void *callbackData,

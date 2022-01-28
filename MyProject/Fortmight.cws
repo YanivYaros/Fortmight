@@ -59,12 +59,12 @@ Window Released = True
 [File 0002]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
 File Type = "CSource"
-Disk Date = 3726250032
+Disk Date = 3726254066
 In Projects = "1,"
 Window Top = 95
 Window Left = 34
 Window Z-Order = 1
-Source Window State = "1,35,35,35,0,13,13,0,0,126,0,407,0,1034,0,33,25,0,35,0,310,683,1,22,"
+Source Window State = "1,1137,1137,1137,6,13,13,0,0,126,0,407,0,1034,0,33,1127,0,1137,3,310,683,1,22,"
 
 [File 0003]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/bass.lib"
