@@ -34,6 +34,10 @@ Prototype="int Menufunc(int panel, int event, void *callbackData, int eventData1
 Class="Function"
 Prototype="int leaderBordpanel(int panel, int event, void *callbackData, int eventData1, int eventData2);"
 
+[Aboutpanel]
+Class="Function"
+Prototype="int Aboutpanel(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
 [getUserInput]
 Class="Function"
 Prototype="void getUserInput();"
@@ -158,11 +162,19 @@ Prototype="int StartGame(int panel, int control, int event, void *callbackData, 
 Class="Function"
 Prototype="int OpenLeaderBord(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[AboutME]
+[OpenAboutMe]
 Class="Function"
-Prototype="int AboutME(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int OpenAboutMe(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
 [ReturnToMenu]
 Class="Function"
 Prototype="int ReturnToMenu(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[OpenTutorialDoc]
+Class="Function"
+Prototype="void OpenTutorialDoc(int menuBar, int menuItem, void *callbackData, int panel);"
+
+[OpenDemoVideo]
+Class="Function"
+Prototype="void OpenDemoVideo(int menuBar, int menuItem, void *callbackData, int panel);"
 

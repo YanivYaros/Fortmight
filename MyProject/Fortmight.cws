@@ -12,7 +12,7 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "Fortmight.prj"
-Drag Bar Left = 298
+Drag Bar Left = 229
 Window Top = 118
 Window Left = 214
 Window Bottom = 620
@@ -32,7 +32,7 @@ Break At First Statement = False
 Sort Type = "File Name"
 Number of Opened Files = 1
 Window Confinement Region Enabled = True
-MainColumnWidth = 281
+MainColumnWidth = 212
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -46,25 +46,25 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
+Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
+File Type = "User Interface Resource"
+Disk Date = 3726250928
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Height = 584
+Window Width = 958
+Window Released = True
+
+[File 0002]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.c"
 File Type = "CSource"
-Disk Date = 3726158193
+Disk Date = 3726250032
 In Projects = "1,"
 Window Top = 95
 Window Left = 34
 Window Z-Order = 1
-Source Window State = "1,795,810,795,6,62,6,0,0,118,0,386,0,1013,0,33,782,0,792,6,310,683,1,22,"
-
-[File 0002]
-Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/Fortmight.uir"
-File Type = "User Interface Resource"
-Disk Date = 3726158086
-In Projects = "1,"
-Window Top = 127
-Window Left = 56
-Window Height = 384
-Window Width = 949
-Window Released = True
+Source Window State = "1,35,35,35,0,13,13,0,0,126,0,407,0,1034,0,33,25,0,35,0,310,683,1,22,"
 
 [File 0003]
 Path = "/c/Users/yaniv/OneDrive/Desktop/Fortmight/MyProject/bass.lib"

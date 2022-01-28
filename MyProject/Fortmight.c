@@ -16,6 +16,7 @@
 static int panelHandle;
 static int panelHandle2;
 static int panelHandle3;
+static int panelHandle4;
 
 HSTREAM Scoresound;
 HSTREAM Livelosssound; 
@@ -28,7 +29,6 @@ FILE *fp;
  
 //Todo:
 // Spaceship Upgrade Weapon
-// Leadrboard
 // Smart Enemy
 // Drift Spaceship
 // Demo
@@ -236,13 +236,16 @@ int main (int argc, char *argv[])
 		return -1;
 	if ((panelHandle3 = LoadPanel (0, "Fortmight.uir", LBPANEL)) < 0)
 		return -1;
+	if ((panelHandle4 = LoadPanel (0, "Fortmight.uir", ABOUTPANEL)) < 0)
+		return -1;
 	initilize();
 	DisplayPanel (panelHandle2);
 	RunUserInterface ();
 	terminate();
 	DiscardPanel (panelHandle);
 	DiscardPanel (panelHandle2);
-	DiscardPanel (panelHandle3); 
+	DiscardPanel (panelHandle3);
+	DiscardPanel (panelHandle4);
 	return 0;
 }
 
@@ -304,6 +307,24 @@ int CVICALLBACK leaderBordpanel (int panel, int event, void *callbackData,
 	return 0;
 }
 
+
+   int CVICALLBACK Aboutpanel (int panel, int event, void *callbackData,
+							int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_GOT_FOCUS:
+
+			break;
+		case EVENT_LOST_FOCUS:
+
+			break;
+		case EVENT_CLOSE:
+			 HidePanel (panelHandle4);
+			break;
+	}
+	return 0;
+}
 
 
 
@@ -1080,13 +1101,13 @@ int CVICALLBACK OpenLeaderBord (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK AboutME (int panel, int control, int event,
+int CVICALLBACK OpenAboutMe(int panel, int control, int event,
 						 void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			  
+			DisplayPanel (panelHandle4);
 			break;
 	}
 	return 0;
@@ -1110,4 +1131,17 @@ int CVICALLBACK ReturnToMenu (int panel, int control, int event,
 	}
 	return 0;
 }
+
+void CVICALLBACK OpenTutorialDoc (int menuBar, int menuItem, void *callbackData,
+								  int panel)
+{
+	//opendoc
+}
+
+void CVICALLBACK OpenDemoVideo (int menuBar, int menuItem, void *callbackData,
+								int panel)
+{
+	//opendemovideo
+}
+
 
